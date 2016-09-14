@@ -1,6 +1,5 @@
 #include "ros/ros.h"
 #include <geometry_msgs/Twist.h>
-#include <sensor_msgs/Imu.h>
 #include <sensor_msgs/Joy.h>
 
 void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
