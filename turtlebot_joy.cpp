@@ -20,7 +20,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     }
     else
     {
-        vel.linear.x = 0;
+     vel.angular.z = 0;
     }
 }
 
