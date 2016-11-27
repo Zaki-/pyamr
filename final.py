@@ -13,9 +13,9 @@ class RoboServer():
     #======
     #                                         go to goal
     #                                             ^
-    #                                             |
+    #                                             ||
     #                                             sub
-    #                                             |
+    #                                             ||
     #  LaserScan == sub ==> LaserScan == pub ==> MAP <== pub == robot finder <== sub == Odometry
     #                      
     
