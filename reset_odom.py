@@ -19,7 +19,7 @@ def odometryCb(msg):
         reset()
 
 if __name__ == "__main__":
-    rospy.init_node('odomtest', anonymous=True)  
+    rospy.init_node('reset_odom', anonymous=True)  
     rospy.Subscriber('odom',Odometry,odometryCb)
 
     rospy.spin()
