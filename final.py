@@ -21,9 +21,5 @@ class RoboServer():
     
     
     
-    self.__cmd_vel_pub = rospy.Publisher('/mobile_base/commands/velocity', Twist)
-    self.__bumper_sub = rospy.Subscriber('/mobile_base/events/bumper', BumperEvent, self.__bumper_handler)
-    self.__odom_sub = rospy.Subscriber('/odom', Odometry, self.__odom_handler)
-    self.__scan_sub = rospy.Subscriber('/scan', LaserScan, self.__scan_handler)
     
     
