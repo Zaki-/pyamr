@@ -8,8 +8,22 @@ class image_converter:
   def cvcallback(self,data):
       cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
       
-  # check 
-      
+  # Convert BGR to HSV
+  hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)  
+  
+  # define range of red color in HSV
+  lower_range = np.array([110,50,50]) #need to find
+  upper_range = np.array([130,255,255]) #need to find
+  
+  # Threshold the HSV image to get only blue colors
+  mask = cv2.inRange(hsv, lower_range, upper_range)
+  
+  opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernal)
+  x ,y, w, h = cv2.boundingRect(opening)
+  cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0),3)
+  centerX = x+w/2
+  centerY = y+h/2
+  
   cv2.imshow("Image window", cv_image)
   
   cv2.waitKey(3)
