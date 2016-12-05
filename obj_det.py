@@ -1,12 +1,13 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0)
+kernal = np.ones((5,5),np.uint8)
 
 while(1):
 
     # Take each frame
-    _, frame = cap.read()
+    ret, frame = cam.read()
 
     # Convert BGR to HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -20,7 +21,12 @@ while(1):
 
     # Bitwise-AND mask and original image
     res = cv2.bitwise_and(frame,frame, mask= mask)
-
+    opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernal)
+    x ,y, w, h = cv2.boundingRect(opening)
+    cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0),3)
+    centerX = x+w/2
+    centerY = y+h/2
+    
     cv2.imshow('frame',frame)
     cv2.imshow('mask',mask)
     cv2.imshow('res',res)
