@@ -5,6 +5,12 @@ class image_converter:
    self.bridge = CvBridge()
    self.image_sub = rospy.Subscriber("image_topic",Image,self.cvcallback)
    
+    
+  def gotostartpoint(centerX, w):
+    if w < arrivedW :
+      move
+    
+    
   def cvcallback(self,data):
       cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
       
@@ -23,7 +29,8 @@ class image_converter:
   cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0),3)
   centerX = x+w/2
   centerY = y+h/2
-  
+  faceStart(centerX)
+  gotostartpoint(centerX, w)
   cv2.imshow("Image window", cv_image)
   
   cv2.waitKey(3)
